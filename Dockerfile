@@ -18,13 +18,6 @@ ENV LC_CTYPE=UTF-8
 ENV LANG=en_US.UTF-8
 ENV TERM xterm
 
-ADD Files/crontab /etc/cron.d/ruggedy-cron
-RUN chmod 0644 /etc/cron.d/ruggedy-cron
-RUN touch /var/log/cron.log
-CMD cron && tail -f /var/log/cron.log
-
-ADD Files/nginx.conf /etc/nginx/
-
 ##########################################################################
 # Repositories                                                           #
 ##########################################################################
@@ -114,6 +107,15 @@ WORKDIR /usr/share/nginx/html
 RUN chown -R www-data:www-data ./ruggedy-vma
 RUN find /usr/share/nginx/html/ruggedy-vma -type d -exec chmod 755 {} \;
 VOLUME ["/usr/share/nginx/html"]
+
+##########################################################################
+# Install and start the cron                                             #
+##########################################################################
+
+ADD Files/crontab /etc/cron.d/ruggedy-cron
+RUN chmod 0600 /etc/cron.d/ruggedy-cron
+RUN touch /var/log/cron.log
+RUN crontab /etc/cron.d/ruggedy-cron
 
 CMD ["/usr/bin/supervisord"]
 
