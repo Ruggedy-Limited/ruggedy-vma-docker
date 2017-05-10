@@ -27,7 +27,6 @@ RUN apt-get upgrade -y --force-yes
 RUN apt-get install -y --force-yes \
     software-properties-common\
     supervisor \
-    rsyslog \
     php7.0-cli \
     php7.0-common \
     php7.0-curl \
