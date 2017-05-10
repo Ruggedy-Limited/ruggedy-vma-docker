@@ -34,7 +34,7 @@ Now run the following commands from your shell while in the directory where the 
 - Run `sudo docker build -t ruggedy/ruggedy .`
 - Run `sudo docker run -it -p80:80 ruggedy/ruggedy`
 
-If all of the above commands succeed, then the application should be installed, working and accessible via http://ip_address:80
+If all of the above commands succeed, then the application should be installed, working and accessible via http://ip_address:80.
 A default admin user is installed with the following credentials:  
 Username: **admin@localhost**  
 Password: **password**
